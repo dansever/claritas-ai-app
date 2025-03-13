@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 export type ColorScheme = {
   primary: string;
   secondary: string;
@@ -22,7 +24,7 @@ export const theme: ThemeType = {
   morning: {
     primary: "#FF7E5F",
     secondary: "#FEB47B",
-    background: "#FFF6F0",
+    background: "#FFF9F5",
     text: "#2D3748",
     textSecondary: "#4A5568",
     surface: "#FFFFFF",
@@ -32,32 +34,32 @@ export const theme: ThemeType = {
     gradientEnd: "#FFE4C7",
   },
   day: {
-    primary: "#4299E1",
+    primary: "#3182CE",
     secondary: "#63B3ED",
     background: "#F7FAFC",
     text: "#2D3748",
     textSecondary: "#4A5568",
     surface: "#FFFFFF",
     surfaceHighlight: "#EBF8FF",
-    gradientStart: "#4299E1",
+    gradientStart: "#3182CE",
     gradientMiddle: "#63B3ED",
     gradientEnd: "#90CDF4",
   },
   evening: {
-    primary: "#805AD5",
-    secondary: "#B794F4",
+    primary: "#6B46C1",
+    secondary: "#9F7AEA",
     background: "#FAF5FF",
     text: "#2D3748",
     textSecondary: "#4A5568",
     surface: "#FFFFFF",
     surfaceHighlight: "#F3E8FF",
-    gradientStart: "#805AD5",
-    gradientMiddle: "#B794F4",
+    gradientStart: "#6B46C1",
+    gradientMiddle: "#9F7AEA",
     gradientEnd: "#D6BCFA",
   },
   night: {
-    primary: "#2C5282",
-    secondary: "#4A5568",
+    primary: "#90CDF4",
+    secondary: "#63B3ED",
     background: "#1A202C",
     text: "#F7FAFC",
     textSecondary: "#E2E8F0",
@@ -100,6 +102,13 @@ export const typography = {
     medium: "500",
     semibold: "600",
     bold: "700",
+  },
+  families: {
+    sans: Platform.select({
+      ios: "SF Pro Display",
+      android: "Roboto",
+      default: "System",
+    }),
   },
 };
 

@@ -63,7 +63,7 @@ Claritas is a beautifully designed mobile app for spiritual but non-religious se
 
 1. Clone the repository:
    \`\`\`bash
-   git clone https://github.com/yourusername/claritas.git
+   git clone https://github.com/yourusername/claritas-ai-app.git
    cd claritas
    \`\`\`
 

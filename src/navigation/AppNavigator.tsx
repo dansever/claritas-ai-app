@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "../hooks/useTheme";
 import { RootStackParamList, MainTabParamList } from "./types";
+import { Platform } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 // Import screens (we'll create these next)
 import { AuthScreen } from "../screens/AuthScreen";
@@ -17,7 +19,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const MainTabs = () => {
-  const { theme } = useTheme();
+  const { theme, timeOfDay } = useTheme();
 
   return (
     <Tab.Navigator
@@ -27,11 +29,17 @@ const MainTabs = () => {
           borderTopWidth: 0,
           elevation: 0,
           shadowOpacity: 0,
-          height: 60,
+          height: Platform.OS === "ios" ? 88 : 60,
+          paddingBottom: Platform.OS === "ios" ? 30 : 10,
+          paddingTop: 10,
         },
         tabBarActiveTintColor: theme.primary,
         tabBarInactiveTintColor: theme.textSecondary,
         headerShown: false,
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "500",
+        },
       }}
     >
       <Tab.Screen
@@ -39,7 +47,9 @@ const MainTabs = () => {
         component={MorningScreen}
         options={{
           tabBarLabel: "Morning",
-          // We'll add icons later
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="sunny-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tab.Screen
@@ -47,6 +57,9 @@ const MainTabs = () => {
         component={GratitudeScreen}
         options={{
           tabBarLabel: "Gratitude",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="heart-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tab.Screen
@@ -54,6 +67,9 @@ const MainTabs = () => {
         component={WellbeingScreen}
         options={{
           tabBarLabel: "Wellbeing",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="water-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tab.Screen
@@ -61,6 +77,9 @@ const MainTabs = () => {
         component={EveningScreen}
         options={{
           tabBarLabel: "Evening",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="moon-outline" size={size} color={color} />
+          ),
         }}
       />
       <Tab.Screen
@@ -68,6 +87,9 @@ const MainTabs = () => {
         component={ProfileScreen}
         options={{
           tabBarLabel: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-outline" size={size} color={color} />
+          ),
         }}
       />
     </Tab.Navigator>
